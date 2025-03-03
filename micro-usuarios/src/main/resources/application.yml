@@ -1,0 +1,13 @@
+server:
+  port: ${SERVER_PORT}
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+
+feign:
+  client:
+    config:
+      default:
+        url: ${FEIGN_CLIENT_URL}
