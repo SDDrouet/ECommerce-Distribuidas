@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  micro-pedidos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: micro-pedidos
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    environment:
+      - SERVER_PORT=${SERVER_PORT}
+      - MONGODB_URI=mongodb://pedidosdb:27017/${MONGODB_DATABASE}
+      - PRODUCT_SERVICE_URL=${PRODUCT_SERVICE_URL}
+      - USER_SERVICE_URL=${USER_SERVICE_URL}
+    depends_on:
+      - pedidosdb
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  pedidosdb:
+    image: mongo:latest
+    container_name: pedidosdb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGODB_DATABASE}
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+    driver: local

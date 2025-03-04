@@ -1,13 +1,12 @@
 server:
-  port: ${SERVER_PORT}
+  port: ${SERVER_PORT:8083}
 
 spring:
   data:
     mongodb:
-      uri: ${MONGODB_URI}
+      uri: ${MONGODB_URI:mongodb://localhost:27017/usuarios}
 
-feign:
-  client:
-    config:
-      default:
-        url: ${FEIGN_CLIENT_URL}
+#.env
+#${SERVER_PORT}=8083
+#${MONGODB_URI}=mongodb://localhost:27017/inventario
+#${FEIGN_CLIENT_URL}=http://localhost:8082

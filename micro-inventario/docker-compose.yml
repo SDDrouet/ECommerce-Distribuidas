@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  micro-inventario:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: micro-inventario
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    environment:
+      - SERVER_PORT=${SERVER_PORT}
+      - FEIGN_CLIENT_URL=${FEIGN_CLIENT_URL}
+      - MONGODB_URI=mongodb://inventariodb:27017/${MONGODB_DATABASE}
+    depends_on:
+      - inventariodb
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  inventariodb:
+    image: mongo:latest
+    container_name: inventariodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGODB_DATABASE}
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+    driver: local

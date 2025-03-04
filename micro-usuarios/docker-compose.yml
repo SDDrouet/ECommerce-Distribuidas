@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  micro-usuarios:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: micro-usuarios
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    environment:
+      - SERVER_PORT=${SERVER_PORT}
+      - MONGODB_URI=mongodb://usuariosdb:27017/${MONGODB_DATABASE}
+    depends_on:
+      - usuariosdb
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  usuariosdb:
+    image: mongo:latest
+    container_name: usuariosdb
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGODB_DATABASE}
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+    driver: local
