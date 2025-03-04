@@ -35,7 +35,7 @@ public class OrderController {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body("Pedido con ID " + id + " no encontrado");
-        
+
     }
 
     // Crear un nuevo pedido
@@ -47,7 +47,7 @@ public class OrderController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al procesar el pedido");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al procesar el pedido: " + e.getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ public class OrderController {
     public ResponseEntity<?> deleteOrder(@PathVariable String id) {
         try {
             orderService.deleteOrder(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Pedido eliminado correctamente");
+            return ResponseEntity.status(HttpStatus.OK).body("Pedido eliminado correctamente");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         } catch (Exception e) {

@@ -18,4 +18,7 @@ public interface ProductClient {
 
     @GetMapping("/products/{id}/stock/{quantity}")
     Optional<Product> checkStock(@PathVariable String id, @PathVariable int quantity);
+
+    @PutMapping("/products/{id}/stock")
+    boolean updateStockProduct(@PathVariable String id, @RequestParam int quantity);
 }

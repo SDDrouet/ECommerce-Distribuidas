@@ -77,6 +77,14 @@ public class OrderServiceImpl implements OrderService {
         order.setSubTotalCost(subTotalCost);
         order.setTotalCost(subTotalCost);
 
+        for (OrderDetail detail : order.getOrderDetails()) {
+            boolean isUpdated = productClient.updateStockProduct(detail.getProduct().getId(), detail.getQuantity());
+
+            if (!isUpdated) {
+                throw new IllegalArgumentException("Error actualizando el stock");
+            }
+        }
+
         return orderRepository.save(order);
     }
 

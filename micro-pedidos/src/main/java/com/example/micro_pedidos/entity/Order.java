@@ -11,6 +11,7 @@ public class Order {
     @Id
     private String id;
     private User user;
+    private String address;
     private List<OrderDetail> orderDetails;
     private double subTotalCost;
     private double totalCost;

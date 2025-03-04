@@ -12,4 +12,5 @@ public interface ProductService {
     Product updateProduct(String id, Product productDetails);
     boolean deleteProduct(String id);
     Optional<Product> isThereStock(String id, int quantity);
+    boolean updateStockProduct(String id, int quantity);
 }

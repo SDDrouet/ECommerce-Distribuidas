@@ -68,4 +68,18 @@ public class ProductServiceImpl implements ProductService {
 
         return optionalProduct;
     }
+
+    @Override
+    public boolean updateStockProduct(String id, int quantity) {
+        return productRepository.findById(id).map(product -> {
+            // Verifica que la cantidad de stock no sea negativa
+            if (product.getStock() - quantity < 0) {
+                throw new RuntimeException("No hay suficiente stock para actualizar");
+            }
+            product.setStock(product.getStock() - quantity);
+            productRepository.save(product);
+            return true; // Devolvemos 'true' indicando que la actualización fue exitosa
+        }).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+    }
+
 }

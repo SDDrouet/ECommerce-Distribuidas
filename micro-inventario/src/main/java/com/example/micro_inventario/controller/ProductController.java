@@ -39,6 +39,11 @@ public class ProductController {
         return productService.deleteProduct(id);
     }
 
+    @PutMapping("/{id}/stock")
+    public boolean updateStockProduct(@PathVariable String id, @RequestParam int quantity) {
+        return productService.updateStockProduct(id, quantity);
+    }
+
     @GetMapping("/{id}/stock/{quantity}")
     public Optional<Product> checkStock(@PathVariable String id, @PathVariable int quantity) {
         return productService.isThereStock(id, quantity);
