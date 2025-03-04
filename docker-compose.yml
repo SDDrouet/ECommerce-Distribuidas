@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  # Microservicio Inventario
+  micro-inventario:
+    build:
+      context: ./micro-inventario
+      dockerfile: Dockerfile
+    container_name: micro-inventario
+    ports:
+      - "${INVENTARIO_PORT}:${INVENTARIO_PORT}"
+    environment:
+      - SERVER_PORT=${INVENTARIO_PORT}
+      - MONGODB_URI=mongodb://mongodb_ecommerce:27017/${MONGODB_DATABASE}
+    depends_on:
+      - mongodb_ecommerce
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Microservicio Usuarios
+  micro-usuarios:
+    build:
+      context: ./micro-usuarios
+      dockerfile: Dockerfile
+    container_name: micro-usuarios
+    ports:
+      - "${USUARIOS_PORT}:${USUARIOS_PORT}"
+    environment:
+      - SERVER_PORT=${USUARIOS_PORT}
+      - MONGODB_URI=mongodb://mongodb_ecommerce:27017/${MONGODB_DATABASE}
+    depends_on:
+      - mongodb_ecommerce
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Microservicio Pedidos
+  micro-pedidos:
+    build:
+      context: ./micro-pedidos
+      dockerfile: Dockerfile
+    container_name: micro-pedidos
+    ports:
+      - "${PEDIDOS_PORT}:${PEDIDOS_PORT}"
+    environment:
+      - SERVER_PORT=${PEDIDOS_PORT}
+      - MONGODB_URI=mongodb://mongodb_ecommerce:27017/${MONGODB_DATABASE}
+      - PRODUCT_SERVICE_URL=http://micro-inventario:${INVENTARIO_PORT}
+      - USER_SERVICE_URL=http://micro-usuarios:${USUARIOS_PORT}
+    depends_on:
+      - mongodb_ecommerce
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Base de datos MongoDB (compartida por los tres microservicios)
+  mongodb_ecommerce:
+    image: mongo:latest
+    container_name: mongodb_ecommerce
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_ecommerce-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGODB_DATABASE}
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb_ecommerce-data:
+    driver: local
