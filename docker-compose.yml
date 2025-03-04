@@ -1,6 +1,25 @@
-version: '3.8'
-
 services:
+  # API Gateway
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: gateway
+    ports:
+      - "${GATEWAY_PORT}:${GATEWAY_PORT}"
+    environment:
+      - SERVER_PORT=${GATEWAY_PORT}
+      - PRODUCT_SERVICE_URL=${PRODUCT_SERVICE_URL}
+      - USER_SERVICE_URL=${USER_SERVICE_URL}
+      - ORDER_SERVICE_URL=${ORDER_SERVICE_URL}
+    depends_on:
+      - micro-inventario
+      - micro-usuarios
+      - micro-pedidos
+    networks:
+      - app-network
+    restart: unless-stopped
+  
   # Microservicio Inventario
   micro-inventario:
     build:
