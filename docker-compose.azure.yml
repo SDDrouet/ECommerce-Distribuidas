@@ -1,0 +1,82 @@
+services:
+  # API Gateway
+  gateway:
+    image: davidrouet/eccomerce.gateway:latest
+    container_name: gateway
+    ports:
+      - "${GATEWAY_PORT}:${GATEWAY_PORT}"
+    environment:
+      - SERVER_PORT=${GATEWAY_PORT}
+      - PRODUCT_SERVICE_URL=${PRODUCT_SERVICE_URL}
+      - USER_SERVICE_URL=${USER_SERVICE_URL}
+      - ORDER_SERVICE_URL=${ORDER_SERVICE_URL}
+    depends_on:
+      - micro-inventario
+      - micro-usuarios
+      - micro-pedidos
+    networks:
+      - app-network
+    restart: unless-stopped
+  
+  # Microservicio Inventario
+  micro-inventario:
+    image: davidrouet/eccomerce.product:latest
+    container_name: micro-inventario
+    environment:
+      - SERVER_PORT=${INVENTARIO_PORT}
+      - MONGODB_URI=mongodb://mongodb_ecommerce:27017/${MONGODB_DATABASE}
+    depends_on:
+      - mongodb_ecommerce
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Microservicio Usuarios
+  micro-usuarios:
+    image: davidrouet/eccomerce.user:latest
+    container_name: micro-usuarios
+    environment:
+      - SERVER_PORT=${USUARIOS_PORT}
+      - MONGODB_URI=mongodb://mongodb_ecommerce:27017/${MONGODB_DATABASE}
+    depends_on:
+      - mongodb_ecommerce
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Microservicio Pedidos
+  micro-pedidos:
+    image: davidrouet/eccomerce.order:latest
+    container_name: micro-pedidos
+    environment:
+      - SERVER_PORT=${PEDIDOS_PORT}
+      - MONGODB_URI=mongodb://mongodb_ecommerce:27017/${MONGODB_DATABASE}
+      - PRODUCT_SERVICE_URL=http://micro-inventario:${INVENTARIO_PORT}
+      - USER_SERVICE_URL=http://micro-usuarios:${USUARIOS_PORT}
+    depends_on:
+      - mongodb_ecommerce
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Base de datos MongoDB (compartida por los tres microservicios)
+  mongodb_ecommerce:
+    image: mongo:latest
+    container_name: mongodb_ecommerce
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_ecommerce-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGODB_DATABASE}
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb_ecommerce-data:
+    driver: local
