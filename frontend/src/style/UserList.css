@@ -1,0 +1,134 @@
+/* Contenedor principal */
+.user-list-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Header de la lista */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Botón de agregar usuario */
+.btn-add {
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-add:hover {
+    background-color: #40916c;
+}
+
+/* Tabla de usuarios */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.user-table th, .user-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-table th {
+    background-color: #2d6a4f;
+    color: white;
+}
+
+/* Selector de roles */
+.role-select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* Íconos de acción */
+.icon {
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin: 0 5px;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.edit {
+    color: #ffb703;
+}
+
+.delete {
+    color: #d62828;
+}
+
+/* Estilos del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.btn-cancel {
+    background: #ccc;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-cancel:hover {
+    background: #bbb;
+}
+
+.btn-delete {
+    background: #d62828;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-delete:hover {
+    background: #a31919;
+}

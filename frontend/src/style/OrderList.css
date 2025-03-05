@@ -1,0 +1,111 @@
+/* Contenedor principal */
+.order-list-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Botón de actualizar */
+.btn-refresh {
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-refresh:hover {
+    background-color: #40916c;
+}
+
+/* Grid de pedidos */
+.order-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Estilos del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Asegurar que está sobre el footer */
+}
+
+/* Mejor presentación del modal */
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* ID del pedido */
+.order-id {
+    color: #2d6a4f;
+}
+
+/* Estilos de la tabla de detalles */
+.order-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.order-detail-table th, .order-detail-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.order-detail-table th {
+    background-color: #2d6a4f;
+    color: white;
+}
+
+/* Botón de cerrar */
+.btn-close {
+    background: #d62828;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.btn-close:hover {
+    background: #a31919;
+}
+
+/* Asegurar que el footer no se sobreponga */
+.footer {
+    position: relative;
+    z-index: 1;
+}

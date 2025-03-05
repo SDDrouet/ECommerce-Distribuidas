@@ -549,3 +549,56 @@ DELETE /users/60d21b4667d0d8992e610c85
 ```json
 {}
 ```
+---
+
+## Frontend - Interfaz de Usuario
+
+El frontend está desarrollado utilizando React y permite interactuar con los servicios del backend de manera eficiente. Los usuarios pueden:
+
+- **Ver productos:** Consulta y visualización de productos disponibles.
+- **Administrar inventario:** Permite crear, actualizar y eliminar productos.
+- **Gestionar pedidos:** Los usuarios pueden realizar pedidos y ver su historial.
+- **Gestionar cuentas:** Los usuarios pueden registrarse, iniciar sesión, y actualizar sus detalles.
+
+El frontend también incluye las siguientes vistas:
+
+- **Login:** Permite a los usuarios autenticarse con su nombre de usuario y contraseña.
+- **Registro:** Permite a los nuevos usuarios crear una cuenta.
+- **Catálogo de productos:** Visualización de productos y opción de agregarlos al carrito.
+- **Pedidos:** Visualización y gestión de los pedidos realizados por el usuario.
+
+## Instalación
+
+### Backend:
+
+1. Clonar el repositorio del backend:
+   ```bash
+   git clone <repositorio-backend>
+   ```
+
+2. Instalar dependencias:
+   ```bash
+   npm install
+   ```
+
+3. Iniciar el servidor:
+   ```bash
+   npm start
+   ```
+
+### Frontend:
+
+1. Clonar el repositorio del frontend:
+   ```bash
+   git clone <repositorio-frontend>
+   ```
+
+2. Instalar dependencias:
+   ```bash
+   npm install
+   ```
+
+3. Iniciar el frontend:
+   ```bash
+   npm run dev
+   ```

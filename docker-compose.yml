@@ -12,6 +12,7 @@ services:
       - PRODUCT_SERVICE_URL=${PRODUCT_SERVICE_URL}
       - USER_SERVICE_URL=${USER_SERVICE_URL}
       - ORDER_SERVICE_URL=${ORDER_SERVICE_URL}
+      - CORS_ALLOWED_ORIGIN=${CORS_ALLOWED_ORIGIN}
     depends_on:
       - micro-inventario
       - micro-usuarios

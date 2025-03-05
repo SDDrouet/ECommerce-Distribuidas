@@ -1,0 +1,120 @@
+.create-product-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(253, 253, 253, 0.1);
+    text-align: center;
+}
+
+/* Botón para volver */
+.back-button {
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.back-button:hover {
+    background-color: #40916c;
+    transform: scale(1.05);
+}
+
+.back-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+/* Título */
+.create-product-container h1 {
+    color: #1b4332;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Espaciado entre los campos */
+.create-product-form .form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+/* Etiquetas */
+.create-product-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #1b4332;
+}
+
+/* Inputs mejorados */
+.create-product-form input,
+.create-product-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #f8f9fa; /* Fondo claro */
+    color: #000; /* Asegurar que el texto dentro de los inputs sea negro */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Efecto en foco */
+.create-product-form input:focus,
+.create-product-form textarea:focus {
+    border-color: #40916c;
+    box-shadow: 0 0 5px rgba(64, 145, 108, 0.5);
+    outline: none;
+}
+
+/* Vista previa de la imagen */
+.image-preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.image-preview img {
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 2px solid #40916c;
+}
+
+/* Botón de guardar */
+.btn-submit {
+    background-color: #40916c;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-submit:hover {
+    background-color: #2d6a4f;
+    transform: scale(1.05);
+}
+
+/* Mensajes de error */
+.error-message {
+    background-color: #ffcccc;
+    color: #c00;
+    padding: 0.5rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
