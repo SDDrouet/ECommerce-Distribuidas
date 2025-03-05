@@ -17,6 +17,7 @@ build_and_push "eccomerce.gateway" "./gateway" &
 build_and_push "eccomerce.product" "./micro-inventario" &
 build_and_push "eccomerce.order" "./micro-pedidos" &
 build_and_push "eccomerce.user" "./micro-usuarios" &
+build_and_push "eccomerce.frontend" "./frontend" &
 
 # Esperar a que todos los procesos terminen
 wait

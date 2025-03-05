@@ -59,7 +59,7 @@ function ProductList() {
             onClick={() => handleProductClick(prod)} // Asegurar que haga click en la tarjeta
           >
             {prod.imageBase64 && (
-              <img src={`data:image/jpeg;base64,${prod.imageBase64}`} alt={prod.name} className="product-img" />
+              <img src={`${prod.imageBase64}`} alt={prod.name} className="product-img" />
             )}
             <h3>{prod.name}</h3>
             <p><strong>Precio:</strong> ${prod.price}</p>
@@ -92,7 +92,7 @@ function ProductList() {
           <div className="modal detail-modal" onClick={(e) => e.stopPropagation()}>
             <h2>{selectedProduct.name}</h2>
             {selectedProduct.imageBase64 && (
-              <img src={`data:image/png;base64,${selectedProduct.imageBase64}`} alt={selectedProduct.name} className="detail-img" />
+              <img src={`${selectedProduct.imageBase64}`} alt={selectedProduct.name} className="detail-img" />
             )}
             <p><strong>Descripción:</strong> {selectedProduct.description}</p>
             <p><strong>Precio:</strong> ${selectedProduct.price}</p>

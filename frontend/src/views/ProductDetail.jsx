@@ -31,7 +31,7 @@ const ProductDetail = () => {
       <h1>{product.name}</h1>
       {product.imageBase64 && (
         <img 
-          src={`data:image/png;base64,${product.imageBase64}`} 
+          src={`${product.imageBase64}`} 
           alt={product.name} 
           width="200" 
         />

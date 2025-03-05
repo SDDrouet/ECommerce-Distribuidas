@@ -20,6 +20,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         // Usa la propiedad leída del application.yml (o variable de entorno)
+        System.out.println("Origenes permitidos: " + allowedOrigin);
         config.setAllowedOrigins(List.of(allowedOrigin));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));

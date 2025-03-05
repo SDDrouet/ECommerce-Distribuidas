@@ -15,6 +15,8 @@ ssh $SERVER_USER@$SERVER_IP << EOF
     cd $REMOTE_PATH
     echo "📉 Deteniendo contenedores..."
     sudo docker-compose -f docker-compose.azure.yml down
+    echo "🔄 Descargando la última versión de las imágenes..."
+    sudo docker-compose -f docker-compose.azure.yml pull
     echo "🔨 Construyendo y levantando servicios..."
     sudo docker-compose -f docker-compose.azure.yml up --build -d
     echo "✅ Despliegue completado."

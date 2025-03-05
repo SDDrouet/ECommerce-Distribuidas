@@ -76,7 +76,7 @@ function ProductCatalog({ cart, setCart, products }) {
         {products.map((prod) => (
           <div className="product-card fade-in" key={prod.id}>
             {prod.imageBase64 && (
-              <img src={`data:image/jpeg;base64,${prod.imageBase64}`} alt={prod.name} className="product-img" />
+              <img src={`${prod.imageBase64}`} alt={prod.name} className="product-img" />
             )}
             <h3>{prod.name}</h3>
             <p><strong>Precio:</strong> ${prod.price}</p>
