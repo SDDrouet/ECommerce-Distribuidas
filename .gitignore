@@ -1,0 +1,31 @@
+# Node modules
+node_modules/
+
+# Dependencias generadas por el frontend
+/dist/
+build/
+
+# Archivos de configuración del editor
+.vscode/
+.idea/
+
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema de cache de paquetes
+.pnp/
+.pnp.js
+
+# Archivos de OS (Ejemplo: MacOS y Windows)
+.DS_Store
+Thumbs.db
+
+# Archivos de configuraciones específicas
+*.swp
+*.swo
+
+# Carpetas de compilación de frontend
+/public/assets

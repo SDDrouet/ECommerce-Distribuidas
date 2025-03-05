@@ -1,0 +1,68 @@
+/* Ajustes globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff !important; /* Asegurar fondo blanco */
+  color: #1b4332; /* Color del texto */
+}
+
+/* Contenedor principal */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* Asegurar fondo blanco */
+}
+
+/* Contenedor de contenido centrado */
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centra el contenido verticalmente */
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px; /* Espaciado para evitar que quede pegado */
+}
+
+/* Footer fijo al fondo */
+.footer {
+  background-color: #2F3E1F;
+  color: #E1D5A3;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  margin-top: auto;
+}
+/* Estilo general de los inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f8f9fa; /* Fondo gris claro */
+  color: #333333; /* Color de texto oscuro para asegurar que sea visible */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Estilo para cuando el input está enfocado */
+input:focus {
+  border-color: #2d6a4f; /* Verde oscuro */
+  background: white; /* Fondo blanco al hacer foco */
+  color: #333333; /* Asegurar que el texto siga visible al enfocar */
+}

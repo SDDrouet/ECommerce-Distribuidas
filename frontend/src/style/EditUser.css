@@ -1,0 +1,147 @@
+/* Contenedor principal para la vista de edición de usuario */
+.edit-user-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff; /* Fondo blanco */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilizar el título */
+h1 {
+    margin-bottom: 1.5rem;
+    color: #2d6a4f; /* Verde oscuro */
+    font-size: 24px;
+}
+
+/* Estilo de los grupos de campos de formulario */
+.form-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+/* Etiquetas de los campos */
+label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #1b4332; /* Verde más oscuro para contraste */
+}
+
+/* Estilo general de los inputs y selects */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #f8f9fa; /* Fondo gris claro */
+    transition: all 0.3s ease-in-out;
+    color: #1b4332; /* Color de texto */
+}
+
+/* Estilo cuando los inputs o selects están enfocados */
+input:focus, select:focus {
+    border-color: #2d6a4f;
+    outline: none;
+    background: white; /* Fondo blanco cuando se enfoca */
+}
+
+/* Estilo cuando el campo está deshabilitado */
+input[disabled] {
+    background: #dfe3e6;
+    cursor: not-allowed;
+}
+
+/* Estilo del select para rol */
+select {
+    background: #40916c; /* Verde claro */
+    color: white; /* Texto blanco */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+select:focus {
+    background: #2d6a4f; /* Verde más oscuro al enfocar */
+}
+
+/* Opciones del select */
+select option {
+    background: #2d6a4f; /* Fondo verde oscuro */
+    color: white; /* Texto blanco */
+}
+
+/* Opción seleccionada */
+select option:checked {
+    background: #1b4332; /* Verde más oscuro */
+    color: #f4f1de; /* Dorado claro */
+}
+
+/* Estilo para el campo de contraseña */
+input[type="password"] {
+    color: #1b4332; /* Asegurar que el texto dentro del campo de contraseña sea visible */
+}
+
+/* Botón de 'Volver a Usuarios' */
+.btn-back {
+    background: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Efecto hover para el botón 'Volver' */
+.btn-back:hover {
+    background: #1b4332; /* Verde más oscuro */
+}
+
+/* Botón de 'Actualizar Usuario' */
+.btn-submit {
+    background: #40916c;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Efecto hover para el botón de actualizar */
+.btn-submit:hover {
+    background: #1b4332; /* Verde más oscuro */
+}
+
+/* Estilos para los mensajes de error */
+.error-message {
+    color: #d62828;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Leyenda de ayuda debajo de cada campo */
+small {
+    display: block;
+    color: #6c757d; /* Gris claro */
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Contenedor que alinea los botones */
+.form-actions {
+    display: flex;
+    flex-direction: column; /* Alineamos los botones verticalmente */
+    gap: 10px; /* Espacio entre los botones */
+    justify-content: center;
+}

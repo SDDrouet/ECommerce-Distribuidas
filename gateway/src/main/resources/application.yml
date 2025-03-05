@@ -5,9 +5,7 @@ spring:
   application:
     name: api-gateway
 
-# Habilitar CORS globalmente
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+cors:
+  allowed:
+    origin: ${CORS_ALLOWED_ORIGIN:http://localhost}
+

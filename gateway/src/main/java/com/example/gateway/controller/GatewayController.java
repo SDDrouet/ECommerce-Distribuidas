@@ -15,7 +15,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("*") // Permitir todas las conexiones (temporalmente)
 public class GatewayController {
 
     private final ProductClient productClient;
