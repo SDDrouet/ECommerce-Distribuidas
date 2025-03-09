@@ -60,10 +60,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User loginUser(String username, String password) {
-        User user = userRepository.findByUsername(username);
-        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return user;
-        }
-        throw new RuntimeException("Usuario o contraseña incorrectos");
+        return userRepository.findByUsername(username);
     }
 }

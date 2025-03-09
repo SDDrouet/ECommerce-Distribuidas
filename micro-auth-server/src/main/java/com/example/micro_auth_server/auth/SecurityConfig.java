@@ -19,6 +19,7 @@ import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -58,10 +59,19 @@ public class SecurityConfig {
     @Autowired
     UserClient userClient;
 
+    @Value("${services.micro.gateway-url}")
+    String gatewayUrl;
+
+    @Value("${services.micro.frontend-url}")
+    String frontendUrl;
+
     @Bean
     @Order(1)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
             throws Exception {
+        System.out.println("GatewayUrl: " + gatewayUrl);
+        System.out.println("frontendUrl: " + frontendUrl);
+
         OAuth2AuthorizationServerConfigurer authorizationServerConfigurer =
                 OAuth2AuthorizationServerConfigurer.authorizationServer();
 
@@ -125,9 +135,9 @@ public class SecurityConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/client-app") //Direciones del cliente en el frontend
-                .redirectUri("http://127.0.0.1/callback")// Este es el endpoint donde vamos a tener el codigo de autorizacion
-                .postLogoutRedirectUri("http://127.0.0.1/")
+                .redirectUri(gatewayUrl + "/login/oauth2/code/client-app") //Direciones del cliente en el frontend
+                .redirectUri(frontendUrl + "/callback")// Este es el endpoint donde vamos a tener el codigo de autorizacion
+                .postLogoutRedirectUri(frontendUrl + "/")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(false).build())

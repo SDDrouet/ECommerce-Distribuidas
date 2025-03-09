@@ -23,13 +23,29 @@ services:
       - USER_SERVICE_URL=${USER_SERVICE_URL}
       - ORDER_SERVICE_URL=${ORDER_SERVICE_URL}
       - CORS_ALLOWED_ORIGIN=${CORS_ALLOWED_ORIGIN}
+      - AUTH_SERVER_URL=${AUTH_SERVER_URL}
     depends_on:
       - micro-inventario
       - micro-usuarios
       - micro-pedidos
+      - micro-auth-server
     networks:
       - app-network
     restart: unless-stopped
+
+  micro-auth-server:  
+    image: davidrouet/eccomerce.micro-auth-server:latest
+    container_name: micro-auth-server
+    ports:
+      - "${AUTH_SERVER_PORT}:${AUTH_SERVER_PORT}"
+    environment:
+      - SERVER_PORT=${AUTH_SERVER_PORT}
+      - FRONTEND_URL=${CORS_ALLOWED_ORIGIN}
+      - GATEWAY_URL=${GATEWAY_URL}
+      - USER_SERVICE_URL=${USER_SERVICE_URL}
+    networks:
+      - app-network
+    restart: unless-stopped 
   
   # Microservicio Inventario
   micro-inventario:
