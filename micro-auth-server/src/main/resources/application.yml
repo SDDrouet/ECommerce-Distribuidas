@@ -1,0 +1,8 @@
+server:
+  port: ${SERVER_PORT:9000}
+
+services:
+  micro:
+    frontend-url: ${FRONTEND_URL:http://127.0.0.1}
+    gateway-url: ${GATEWAY_URL:http://127.0.0.1:8080}
+    user-service-url: ${USER_SERVICE_URL:http://localhost:8083}

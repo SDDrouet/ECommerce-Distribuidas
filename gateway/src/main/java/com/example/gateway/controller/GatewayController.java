@@ -27,74 +27,79 @@ public class GatewayController {
         this.orderClient = orderClient;
     }
 
-    // Productos
+    // PUBLIC
     @GetMapping("/products")
     public List<Product> getAllProducts() {
         return productClient.getAllProducts();
     }
 
+    // PUBLIC
     @GetMapping("/products/{id}")
     public Optional<Product> getProductById(@PathVariable String id) {
         return productClient.getProductById(id);
     }
 
+    // ADMIN
     @PostMapping("/products")
     public Product createProduct(@RequestBody Product product) {
         return productClient.createProduct(product);
     }
 
+    // ADMIN
     @PutMapping("/products/{id}")
     public Product updateProduct(@PathVariable String id, @RequestBody Product productDetails) {
         return productClient.updateProduct(id, productDetails);
     }
 
+    // ADMIN
     @DeleteMapping("/products/{id}")
     public boolean deleteProduct(@PathVariable String id) {
         return productClient.deleteProduct(id);
     }
 
+    // ADMIN
     @PutMapping("/products/{id}/stock")
     public boolean updateStockProduct(@PathVariable String id, @RequestParam int quantity) {
         return productClient.updateStockProduct(id, quantity);
     }
 
+    // PUBLIC
     @GetMapping("/products/{id}/stock/{quantity}")
     public Optional<Product> checkStock(@PathVariable String id, @PathVariable int quantity) {
         return productClient.checkStock(id, quantity);
     }
 
-    // Usuarios
+    // PUBLIC
     @PostMapping("/users/register")
     public User registerUser(@RequestBody User user) {
         return userClient.registerUser(user);
     }
 
-    @PostMapping("/users/login")
-    public User loginUser(@RequestParam String username, @RequestParam String password) {
-        return userClient.loginUser(username, password);
-    }
-
+    // ADMIN
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userClient.getAllUsers();
     }
 
+    // USER
     @GetMapping("/users/{id}")
     public Optional<User> getUserById(@PathVariable String id) {
         return userClient.getUserById(id);
     }
 
+    // USER
     @PutMapping("/users/{id}")
     public User updateUser(@PathVariable String id, @RequestBody User user) {
         return userClient.updateUser(id, user);
     }
 
+    // ADMIN
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable String id) {
         userClient.deleteUser(id);
     }
 
-    // Obtener todos los pedidos
+    // ADMIN
     @GetMapping("/orders")
     public ResponseEntity<?> getAllOrders() {
         try {
@@ -104,7 +109,7 @@ public class GatewayController {
         }
     }
 
-    // Obtener pedido por ID
+    // ADMIN
     @GetMapping("/orders/{id}")
     public ResponseEntity<?> getOrderById(@PathVariable String id) {
         try {
@@ -114,7 +119,7 @@ public class GatewayController {
         }
     }
 
-    // Crear un pedido
+    // USER
     @PostMapping("/orders")
     public ResponseEntity<?> createOrder(@RequestBody Order order) {
         try {
@@ -124,7 +129,7 @@ public class GatewayController {
         }
     }
 
-    // Eliminar un pedido
+    // ADMIN
     @DeleteMapping("/orders/{id}")
     public ResponseEntity<?> deleteOrder(@PathVariable String id) {
         try {
